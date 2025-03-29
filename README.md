@@ -5,3 +5,9 @@ BCS Hacks Project
 ```
 conda env create -f environment.yml
 ```
+
+```
+macOS: 
+conda env create -f environment-mac.yml
+
+```
