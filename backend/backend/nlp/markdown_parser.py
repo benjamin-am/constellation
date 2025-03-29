@@ -1,13 +1,13 @@
 import os
-
-# import markdown
-# from bs4 import BeautifulSoup
 import re
 from collections import Counter
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from sentence_transformers import SentenceTransformer
+import ollama
+from typing import Dict, List, Set, Counter as CounterType, Any, Union
+
 
 # Download required NLTK resources
 nltk.download("stopwords")
@@ -18,19 +18,20 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 class MarkdownParser:
-    def __init__(self, folder_path):
+    def __init__(self, folder_path: str) -> None:
         self.folder_path = folder_path
         self.stop_words = set(stopwords.words("english"))
-        self.file_embeddings = {}
+        self.weighted_embeddings = {}
+        self.ollama_embeddings = {}
         self.markdown_set_weighted_embeddings()
 
-    def markdown_plaintext(self, file_path):
+    def markdown_plaintext(self, file_path: str) -> List[str]:
         # Read the file
         with open(file_path, "r", encoding="utf-8") as file:
             content = file.readlines()  # Read line by line
         return content
 
-    def markdown_set_weighted_embeddings(self):
+    def markdown_set_weighted_embeddings(self) -> None:
         # Loop through each markdown file in the folder
         for filename in os.listdir(self.folder_path):
             if filename.endswith(".md"):  # Only process Markdown files
@@ -52,9 +53,24 @@ class MarkdownParser:
                 }
 
                 # Store embeddings for this file
-                self.file_embeddings[filename] = weighted_embeddings
+                self.weighted_embeddings[filename] = weighted_embeddings
 
-    def content_counter(self, content):
+    def get_ollama_embeddings(self) -> None:
+        for filename in os.listdir(self.folder_path):
+            if filename.endswith(".md"):  # Only process Markdown files
+                file_path = os.path.join(self.folder_path, filename)
+
+                content: List[str] = self.markdown_plaintext(file_path)
+                full_text = "\n".join(content)
+
+                ollama_embeddings = ollama.embeddings(
+                    model="llama3.2", prompt=full_text
+                )
+
+                # Store embeddings for this file
+                self.ollama_embeddings[filename] = ollama_embeddings
+
+    def content_counter(self, content) -> CounterType[str]:
         word_freq = Counter()  # Word frequency counter
 
         for line in content:
@@ -78,5 +94,5 @@ class MarkdownParser:
 
         return word_freq
 
-    def get_weighted_embeddings(self):
-        return self.file_embeddings
+    def get_weighted_embeddings(self) -> Dict[str, Dict[str, List[float]]]:
+        return self.weighted_embeddings
