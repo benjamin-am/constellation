@@ -1,0 +1,3 @@
+## Nationalism and Ethnic Politics
+
+Nationalism influences state identity, immigration, and ethnic tensions. Civic nationalism is based on shared values, while ethnic nationalism ties identity to ancestry. Ethnic politics fuel secessionist movements (e.g., Catalonia, Quebec) and conflicts like the Balkans and Rwanda. Populism uses nationalist rhetoric to mobilize support, often targeting immigrants. Globalization challenges nationalism, especially in refugee policies, border security, and economic sovereignty.

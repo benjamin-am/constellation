@@ -1,0 +1,9 @@
+## Focused Attention
+
+In a visual search task the distractor items are deliberately introduced so as to make it difficult to detect the targets. But there are other situations in everyday life in which we try to focus on one task in the face of distraction. For example, we are trying to remember something while someone else is talking.
+
+To study this situation, Christian Büchel scanned people while they had to remember a series of tones and at the same time they were presented with distracting pictures of objects. The finding was that distraction reduced the activation in the LO complex, and this was especially so when the auditory memory task was difficult. This suggests that information in the irrelevant visual stream was inhibited.
+
+It is this effect that accounts for our ability to distract ourselves when we are in pain or are experiencing tinnitus in our ears. In another experiment by the same team a painful stimulus was applied to the backs of people while they were scanned. As in the experiment just described the people were required to carry out a memory task at the same time. Mental distraction led to a decrease in the activation in the sensory pathway in the spinal cord, and the people also reported that they felt less pain.
+
+The signals that cause this reduction of pain originate in the prefrontal cortex. It sends connections back to the higher sensory areas (Figure 9). Signals that pass through these pathways are referred to as ‘top–down’ signals so as to contrast them with the ‘bottom–up’ signals that arrive via the primary sensory areas. In the case of pain these signals appear to evoke a release of opiates in the system and it is this release that moderates the pain.

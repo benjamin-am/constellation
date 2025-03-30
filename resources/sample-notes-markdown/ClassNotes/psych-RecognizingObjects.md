@@ -1,0 +1,9 @@
+## Recognizing Objects
+
+Objects are recognized on the basis of their shape and colour and it has already been established that the LO complex is necessary for object recognition. But this does not tell us how that recognition occurs. To understand this we need to appreciate that processing occurs via successive stages in the visual relay (Figure 5).
+
+These stages differ in that the earlier ones represent small elements of the visual scene whereas later ones have a more complete representation. We know this because Kalanit Grill-Spector and Rafael Malach have scanned people while they viewed a series of pictures that differed in how complete they were. Some showed objects that were complete, some two halves, some four quarters, and so on, with differing degrees of scrambling. In the earliest areas V1–V3 the activation was maximal for the scrambled pictures, in V4 for ones that were less scrambled and in the LO complex for pictures that were either complete or in halves.
+
+So the earlier stages process the elements and the later stages integrate them. It is thought that this is achieved via a hierarchical arrangement in which each higher-order neuron in area B receives an input from many lower-order neurons in area A, each neuron in area C receives an input from many neurons in area B, and so on through successive stages.
+
+An arrangement of this sort would also allow us to learn that an object is the same even though viewed from different angles. As we approach an object in everyday life we see it from different viewpoints at different times. At one time the object might be to the left of our gaze and at another to the right. At one time the object might appear small because it is far away and at another large because we are nearer to it. And at one time we might see the object from one angle and at another from the opposite angle. Yet we need to appreciate that the object is the same in all cases.

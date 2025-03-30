@@ -1,0 +1,9 @@
+## The Indexer: Preprocessing Documents for Searching
+Indexers job is to decompose and prepare documents delivered by the crawler to process them efficiently in the searching process
+Indexer uses procedures not specific to search engines, but used in all info retrieval systems
+Parser decomposes documents into indexable units (words, word stems, n-grams) and records occurrence within document
+This procedure creates an inverted index, which for every indexed unit records the documents in which this unit occurs. Inverted means that one goes from individual words (index entries) to documents and not vice versa. When we usually navigate the Web, we move from document to document.
+Similar to index of a book
+ In the indexing process, an index is created from the documents representing the documents. However, this also means that when we search using a search engine, we are not searching the documents themselves but their representations (i.e., the index)
+There are technical problems with the construction of indexes, which result mainly from the mass of documents to be indexed. For this reason, search engines work with distributed indexes, i.e., there is not one index that is stored centrally, but rather a distributed system is created to accelerate access and continuous updating. This is because, just like crawling, indexing must be performed continuously; otherwise, the index entries could refer to documents that no longer exist at all or have changed in such a way that the information recorded in the index no longer matches them.
+For ranking purposes, however, it is also important to know additional information, such as word frequencies or the position of words in the documents. More complex inverted indexes are used for this purpose. 

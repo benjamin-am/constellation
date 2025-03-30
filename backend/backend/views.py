@@ -96,9 +96,9 @@ def save_note(request):
 
         # Generate embeddings
         try:
-            embeddings = word_embeddings([content])
-            embeddings = embeddings.tolist()
-            # embeddings = get_text_embeddings_llama(content)
+            # embeddings = word_embeddings([content])
+            # embeddings = embeddings.tolist()
+            embeddings = get_text_embeddings_llama(content)
         except Exception as e:
             return JsonResponse(
                 {"error": f"Failed to generate embeddings: {str(e)}"}, status=500
@@ -161,8 +161,8 @@ def analyze_note_draft(request):
 
         # TODO: try ben's function
         try:
-            query_embedding = word_embeddings([content])
-            # query_embedding = get_text_embeddings_llama(content)
+            # query_embedding = word_embeddings([content])
+            query_embedding = get_text_embeddings_llama(content)
         except Exception as e:
             return JsonResponse(
                 {"error": f"Failed to generate embeddings: {str(e)}"}, status=500
