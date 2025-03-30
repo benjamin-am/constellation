@@ -1,0 +1,3 @@
+## Social Welfare and Economic Policy
+
+Social welfare and economic policies shape wealth distribution, public goods access, and poverty reduction. Keynesian economics supports government intervention, while neoliberalism favors free markets and reduced welfare spending. Welfare models vary: liberal (minimal aid), social democratic (universal benefits), and corporatist (employment-based). Key programs include UBI, pensions, healthcare, and unemployment benefits. Challenges include rising costs, income inequality, globalization, and debates over privatization versus public funding.

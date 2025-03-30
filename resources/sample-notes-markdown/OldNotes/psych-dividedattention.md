@@ -1,0 +1,9 @@
+## Divided Attention
+
+In the experiments described so far the people were required to attend selectively, but in everyday life we sometimes engage in multitasking. We use a mobile phone while driving the car. We assume that this is safe if the phone is hands-free because we can keep both hands on the steering wheel. However, we still have to keep an eye on the road at the same time as responding on the phone.
+
+We can simulate the situation in the laboratory by requiring people to respond to visual and auditory cues at the same time. In one experiment the people had to press different fingers depending on the shape presented and also to repeat the words that they heard. The finding was that there was a penalty to pay in that it took longer to respond when doing both tasks together than when doing either task on its own.
+
+But why should this be? Chapter 2 stressed that the brain can perform many operations in parallel. Different areas are involved in analysing what we see or hear (Figure 10), and so we can see at the same time as we hear. And different areas are involved in moving the fingers and speaking (Figure 10), and so we should be able to press a finger at the same time as talking.
+
+The reason why there is a problem in doing a visual/manual and auditory/vocal task at the same time is that there is a stage at which the same area is engaged by both tasks. Paul Dux and René Marois have shown this is true for the ventral prefrontal cortex (Figure 10). It is here that the sensory input is transformed into the motor output: one component of the activation reflects the sensory input and another the motor output.
