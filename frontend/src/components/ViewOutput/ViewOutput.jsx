@@ -3,7 +3,7 @@ import axios from "axios";
 
 import "../ViewOutput/ViewOutput.scss";
 
-function ViewOutput({ notesText }) {
+function ViewOutput({ notesText, title }) {
   const [response, setResponse] = useState(null);
   const prevWordCountRef = useRef(0);
 
@@ -16,9 +16,20 @@ function ViewOutput({ notesText }) {
     const currentWordCount = currentText(notesText);
     const prevWordCount = prevWordCountRef.current;
 
-    if (currentWordCount >= 30 && prevWordCount < 30) {
+    if (
+      currentWordCount >= 30 &&
+      prevWordCount < 30 &&
+      notesText.trim().length > 0
+    ) {
+      const payload = {
+        title: title,
+        content: notesText,
+      };
+
+      console.log("Sending to /analyzedraft/:", payload);
+
       axios
-        .get(`http://127.0.0.1:8000/api/synthesize/`)
+        .post("http://127.0.0.1:8000/api/notes/analyzedraft/", payload)
         .then((res) => {
           setResponse(res.data);
           console.log("API Response", res.data);
@@ -39,12 +50,13 @@ function ViewOutput({ notesText }) {
 
             <h3>Similar Notes:</h3>
             <ul>
-                {response.similar_notes.map((note, index) => (
-                    <li key={index}>
-                        <strong>{note.title}</strong>
-                        <p>{note.content}</p>
-                    </li>
-                ))}
+              {response.similar_notes.map((note, index) => (
+                <li key={index}>
+                  <strong>{note.title}</strong>
+                  <p>{note.preview}</p>{" "}
+                  {/* Show preview instead of full content */}
+                </li>
+              ))}
             </ul>
           </span>
         ) : (

@@ -9,44 +9,43 @@ import ViewOutput from "../components/ViewOutput/ViewOutput";
 import VerticalNavBar from "../components/VerticalNavBar/VerticalNavBar";
 
 function NotesPage() {
-    const [notesText, setNotesText] = useState("");
-    const [title, setTitle] = useState("");
+  const [notesText, setNotesText] = useState("");
+  const [title, setTitle] = useState("");
 
-    const handleSave = (e) => {
-        const note = {
-            title: title,
-            content: notesText,
-        };
+  const handleSave = (e) => {
+    const note = {
+      title: title,
+      content: notesText,
+    };
 
-        console.log("successfully saved")
-        axios
-        .post(`http://127.0.0.1:8000/api/notes/`, note)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log("error saving post", error);
+    console.log("successfully saved");
+    axios
+      .post(`http://127.0.0.1:8000/api/notes/save/`, note)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("error saving post", error);
+      });
+  };
 
-        });
-    }
-    
-    return(
-        <>
-        <section className="page">
-            <div className="container">
-        <VerticalNavBar onSave={handleSave} />
-        <Notes 
-        title={title}
-        setTitle={setTitle} 
-        notesText={notesText} 
-        setNotesText={setNotesText} 
-        onSave={handleSave}/>
-        <ViewOutput notesText={notesText}/>
+  return (
+    <>
+      <section className="page">
+        <div className="container">
+          <VerticalNavBar onSave={handleSave} />
+          <Notes
+            title={title}
+            setTitle={setTitle}
+            notesText={notesText}
+            setNotesText={setNotesText}
+            onSave={handleSave}
+          />
+          <ViewOutput notesText={notesText} />
         </div>
-        </section>
-
-        </>
-    )
+      </section>
+    </>
+  );
 }
 
 export default NotesPage;
