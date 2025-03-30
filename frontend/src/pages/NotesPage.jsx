@@ -34,7 +34,7 @@ function NotesPage() {
         <>
         <section className="page">
             <div className="container">
-        <VerticalNavBar onSave={handleSave}/>
+        <VerticalNavBar onSave={handleSave} />
         <Notes 
         title={title}
         setTitle={setTitle} 

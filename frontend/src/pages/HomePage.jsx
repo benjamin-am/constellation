@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Welcome from "../components/Welcome/Welcome";
 import Header from "../components/Header/Header"
 
@@ -7,7 +8,9 @@ function HomePage() {
 
     return(
         <section className="body">
-        <Header />
+        <button className="button">
+         <Link to="/notes">  Get Started </Link>
+        </button>
         </section>
  
     )

@@ -3,8 +3,8 @@
 @use "../../public/styles/variables" as *;
 
 .page {
-    background-color: #59dfa1be;
-
+    background-image: linear-gradient(to bottom,  rgb(201, 183, 238) , rgb(239, 167, 167));
+    min-height: 100vh;
 }
 
 .container {
