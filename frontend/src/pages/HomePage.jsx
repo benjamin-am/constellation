@@ -8,6 +8,9 @@ function HomePage() {
 
     return(
         <section className="body">
+            <div className="homePage">
+                
+            </div>
         <button className="button">
          <Link to="/notes">  Get Started </Link>
         </button>
