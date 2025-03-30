@@ -1,7 +1,23 @@
+import { useEffect, useState } from "react";
+import { axios } from "axios";
 import "./PastNotes.scss";
 
-function VerticalNavBar() {
 
+function PastNotes() {
+    const [myNotes, setMyNotes] = useState([]);
+
+    // useEffect(() => {
+    //     const getAllPosts = () => {
+    //       axios
+    //         .get(`http://localhost:8080/posts/`)
+    //         .then((response) => {
+    //           setMyPosts(response.data);
+    //           console.log(response.data);
+    //         })
+    //         .catch((error) => console.log(error));
+    //     };
+    //     getAllPosts();
+    //   }, []);
 
     return(
      <>
@@ -12,4 +28,4 @@ function VerticalNavBar() {
     )
 }
 
-export default VerticalNavBar;
+export default PastNotes;
