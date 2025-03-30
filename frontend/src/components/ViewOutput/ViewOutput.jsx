@@ -11,7 +11,17 @@ function ViewOutput({ notesText, title }) {
     return text.trim().split(/\s+/).filter(Boolean).length;
   };
 
-  //API call
+  const tryParseJSON = (text) => {
+    try {
+      const parsed = JSON.parse(text);
+      if (Array.isArray(parsed)) return parsed;
+    } catch (err) {
+      console.warn("Could not parse structured synthesis JSON:", err);
+    }
+    return null;
+  };
+
+  // API call
   useEffect(() => {
     const currentWordCount = currentText(notesText);
     const prevWordCount = prevWordCountRef.current;
@@ -22,7 +32,7 @@ function ViewOutput({ notesText, title }) {
       notesText.trim().length > 0
     ) {
       const payload = {
-        title: title,
+        title: title?.trim() || "Untitled",
         content: notesText,
       };
 
@@ -40,24 +50,38 @@ function ViewOutput({ notesText, title }) {
     prevWordCountRef.current = currentWordCount;
   }, [notesText]);
 
+  const parsedConnections = response?.synthesis ? response.synthesis : null;
+
   return (
     <div className="viewOutputWrapper">
       <div className="viewOutput">
         {response ? (
           <span className="apiResponse">
-            <h2>Synthesis:</h2>
-            <p>{response.synthesis}</p>
-
             <h3>Similar Notes:</h3>
             <ul>
               {response.similar_notes.map((note, index) => (
                 <li key={index}>
                   <strong>{note.title}</strong>
-                  <p>{note.preview}</p>{" "}
-                  {/* Show preview instead of full content */}
+                  <p>{note.preview}</p>
                 </li>
               ))}
             </ul>
+            <h3>Synthesis:</h3>
+            {/* {parsedConnections ? (
+              parsedConnections.map((conn, idx) => (
+                <div key={idx} className="connectionBlock">
+                  <h4>{conn.connection_title}</h4>
+                  <p>
+                    <strong>Question:</strong> {conn.question}
+                  </p>
+                  <p>
+                    <strong>Insight:</strong> {conn.insight}
+                  </p>
+                </div>
+              ))
+            ) : ( */}
+            <p>{response.synthesis}</p>
+            {/* )} */}
           </span>
         ) : (
           <p>Start typing and will load shortly...</p>
@@ -66,4 +90,5 @@ function ViewOutput({ notesText, title }) {
     </div>
   );
 }
+
 export default ViewOutput;

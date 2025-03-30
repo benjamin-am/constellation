@@ -3,24 +3,36 @@
 @use "../../../public/styles/variables" as *;
 
 .viewOutputWrapper {
-    margin-top: 20px;
-    margin-right: 20px;
-    display: flex;
-    
+  margin-top: 20px;
+  margin-right: 20px;
+  display: flex;
 }
 
-.viewOutput{
-    width: 28rem;
-    height: 90vh;
-    size: 20px;
-    align-items: right;
-    font-size: 1.5rem;
-    border: solid 2px;
-    border-color: rgb(232, 140, 155);
+.viewOutput {
+  width: 35rem;
+  height: 95vh;
+  size: 20px;
+  align-items: right;
+  font-size: 1.5rem;
+  border: solid 2px;
+  border-color: rgb(232, 140, 155);
 
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap: break-word;
 }
 
-.apiResponse{
-    width: 25rem;
-    height: 45rem;
+.apiResponse {
+  width: 25rem;
+  height: 45rem;
+}
+
+h3 {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+.connectionBlock {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
 }
