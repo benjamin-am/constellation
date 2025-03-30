@@ -2,8 +2,13 @@
 @use "../../public/styles/mixins" as *;
 @use "../../public/styles/variables" as *;
 
+.page {
+    background-image: linear-gradient(to bottom,  rgb(201, 183, 238) , rgb(239, 167, 167));
+    min-height: 100vh;
+}
+
 .container {
-    margin: 20px;
+
     display: flex;
 
 }
