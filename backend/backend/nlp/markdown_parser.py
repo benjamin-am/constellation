@@ -6,13 +6,13 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from sentence_transformers import SentenceTransformer
 import ollama
-from typing import Dict, List, Set, Counter as CounterType, Any, Union
+from typing import Dict, List, Counter as CounterType
 
 
 # Download required NLTK resources
 nltk.download("stopwords")
 nltk.download("punkt")
-nltk.download('punkt_tab')
+nltk.download("punkt_tab")
 
 # Load embedding model
 model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -66,7 +66,7 @@ class MarkdownParser:
 
                     ollama_embedding = ollama.embeddings(
                         model="llama3.2", prompt=full_text
-                    )['embedding']
+                    )["embedding"]
 
                     # Store embeddings for this file
                     self.ollama_embedding[filename] = ollama_embedding
@@ -97,6 +97,6 @@ class MarkdownParser:
 
     def get_weighted_embeddings(self) -> Dict[str, Dict[str, List[float]]]:
         return self.weighted_embeddings
-    
+
     def get_ollama_embeddings(self) -> Dict[str, List[float]]:
         return self.ollama_embedding
