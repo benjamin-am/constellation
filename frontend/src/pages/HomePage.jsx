@@ -8,6 +8,11 @@ function HomePage() {
 
     return(
         <section className="body">
+            <div className="title__container">
+                <p className="title">
+                    constallation
+                </p>
+            </div>
         <button className="button">
          <Link to="/notes">  Get Started </Link>
         </button>
