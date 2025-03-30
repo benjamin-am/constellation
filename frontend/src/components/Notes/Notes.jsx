@@ -1,11 +1,20 @@
 import "../Notes/Notes.scss"
 
-function Notes() {
+function Notes({ notesText, setNotesText }) {
+    const handleChange = (e) => {
+        setNotesText(e.target.value);
+    };
+
     return (
         <div className="notesWrapper">
-        <textarea className="notes" placeholder="this is my notes area">
+        <textarea 
+        className="notesText" 
+        placeholder="this is my notes area"
+        value={notesText}
+        onChange={handleChange}>
 
 </textarea>
+
         </div>
 
     )

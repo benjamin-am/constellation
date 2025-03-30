@@ -1,5 +1,9 @@
+@use "../../public/styles/font" as *;
+@use "../../public/styles/mixins" as *;
+@use "../../public/styles/variables" as *;
+
 .container {
-    margin: 10px;
+    margin: 20px;
     display: flex;
-    
+
 }

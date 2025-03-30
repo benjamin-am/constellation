@@ -1,6 +1,6 @@
-//@use "../../styles/mixins" as *;
-//@use "../../styles/variables" as *;
-//@use "../../styles/font" as *;
+@use "../../../public/styles/font" as *;
+@use "../../../public/styles/mixins" as *;
+@use "../../../public/styles/variables" as *;
 
 .header {
     &__container {

@@ -1,14 +1,21 @@
 import "./VerticalNavBar.scss";
+import { Link } from "react-router-dom";
 
-function VerticalNavBar() {
+function VerticalNavBar({onSave}) {
+
+
     return(
      <nav className="nav">
         <ul>
             <button className="button">
-            Current Notes
+                <Link to="/">Home Test</Link>
+            </button>
+            <button className="button"
+             onClick={onSave}>
+            <Link to="/pastNotes">Save Current Notes</Link>
             </button>
             <button className="button">
-            Past Notes
+                <Link to="/pastNotes">Review Past Notes</Link>
             </button>
         </ul>
         </nav>

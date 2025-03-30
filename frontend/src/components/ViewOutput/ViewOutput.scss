@@ -1,3 +1,6 @@
+@use "../../../public/styles/font" as *;
+@use "../../../public/styles/mixins" as *;
+@use "../../../public/styles/variables" as *;
 
 .viewOutputWrapper {
     margin-top: 20px;
@@ -8,7 +11,16 @@
 
 .viewOutput{
     width: 28rem;
-    height: 50rem;
+    height: 90vh;
     size: 20px;
     align-items: right;
+    font-size: 1.5rem;
+    border: solid 2px;
+    border-color: rgb(232, 140, 155);
+
+}
+
+.apiResponse{
+    width: 25rem;
+    height: 45rem;
 }

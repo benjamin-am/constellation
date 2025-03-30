@@ -1,3 +1,6 @@
+@use "../../../public/styles/font" as *;
+@use "../../../public/styles/mixins" as *;
+@use "../../../public/styles/variables" as *;
 
 .notesWrapper {
     margin-top: 20px;
@@ -5,10 +8,11 @@
     margin-right: 20px;
 }
 
-.notes {
-    width: 70rem;
-    height: 50rem;
+.notesText {
+    width: 75rem;
+    height: 90vh;
     size: 20px;
     align-items: left;
+    font-size: 1.5rem;
 }
 
