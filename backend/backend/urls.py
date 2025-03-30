@@ -18,8 +18,12 @@ Including another URLconf
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path("api/notes/", views.notes_api, name="notes-api"),
-    path("api/similar-notes/", views.similar_notes_api, name="similar-notes-api"),
-    path("api/synthesize/", views.synthesize_api, name="synthesize-api"),
+    path("api/notes/<int:note_id>/", views.get_note_by_id, name="get-note-by-id"),
+    path(
+        "api/notes/allnotes/", views.get_all_notes_preview, name="get-all-notes-preview"
+    ),
+    path("api/analyze/", views.analyze_note_api, name="analyze-note-api"),
 ]

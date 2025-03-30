@@ -60,6 +60,7 @@ def test_with_word_embeddings(parser, folder_path):
         return
 
     avg_query_embedding = np.mean([emb for emb in query_embeddings.values()], axis=0)
+    print(f"Query embedding shape: {avg_query_embedding.shape}")
 
     similarities = []
     for file, embeddings in file_embeddings.items():
@@ -143,8 +144,8 @@ def test_similarity_between_files():
     )
     test_with_word_embeddings(parser, folder_path)
 
-    print("\n=== Testing with Ollama embeddings (WHOLE FILE EMBEDDINGS) ===")
-    test_with_ollama_embeddings(parser, folder_path)
+    # print("\n=== Testing with Ollama embeddings (WHOLE FILE EMBEDDINGS) ===")
+    # test_with_ollama_embeddings(parser, folder_path)
 
 
 def test_note_connections_with_top_similar_notes(
