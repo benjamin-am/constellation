@@ -20,10 +20,12 @@ from . import views
 
 
 urlpatterns = [
-    path("api/notes/", views.notes_api, name="notes-api"),
+    # path("api/notes/", views.notes_api, name="notes-api"),
+    path("api/notes/analyzedraft/", views.analyze_note_draft, name="notes-api"),
     path("api/notes/<int:note_id>/", views.get_note_by_id, name="get-note-by-id"),
     path(
         "api/notes/allnotes/", views.get_all_notes_preview, name="get-all-notes-preview"
     ),
-    path("api/analyze/", views.analyze_note_api, name="analyze-note-api"),
+    # path("api/analyze/", views.analyze_note_api, name="analyze-note-api"),
+    path("api/notes/save/", views.save_note, name="save-note"),
 ]
