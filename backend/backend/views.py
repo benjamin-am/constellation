@@ -4,14 +4,14 @@ import json
 # Hardcoded sample notes
 SAMPLE_NOTES = [
     {
-        "id": "123",
+        # "id": "123",
         "title": "AI Concepts",
         "content": "This is a note about AI and machine learning concepts",
         "created_at": 1679580000,
         "updated_at": 1679580000,
     },
     {
-        "id": "456",
+        # "id": "456",
         "title": "Psychology Notes",
         "content": "Notes about cognitive biases and decision-making processes",
         "created_at": 1679580100,
@@ -23,7 +23,7 @@ SAMPLE_NOTES = [
 def notes_api(request):
     """Simple view that returns hardcoded notes"""
     if request.method == "GET":
-        return JsonResponse(SAMPLE_NOTES[1], safe=False)
+        return JsonResponse(SAMPLE_NOTES, safe=False)
     elif request.method == "POST":
         # Just return a hardcoded response for testing
         return JsonResponse(SAMPLE_NOTES[0], status=201)
