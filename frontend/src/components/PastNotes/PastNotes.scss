@@ -1,0 +1,17 @@
+.notesDisplay {
+    &__section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__textContainer {
+        background-color: white;
+        width: 80vh;
+        text-align: left;
+        border-radius: 3px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-top: 1rem;
+    }
+
+}

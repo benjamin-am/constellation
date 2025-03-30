@@ -12,6 +12,8 @@ sys.path.append(nlp_path)
 from nlp.markdown_parser import MarkdownParser
 
 
+index = 3
+
 def compute_similarity(query_embedding, stored_embedding):
     """
     Compute cosine similarity between two embedding vectors
@@ -48,7 +50,7 @@ def test_with_word_embeddings(parser, folder_path):
         return
 
     print(files)
-    query_file = files[0]
+    query_file = files[index]
     print(f"Using {query_file} as the query file")
 
     # For word-weighted embeddings, we need to average the embeddings of all words
@@ -60,6 +62,7 @@ def test_with_word_embeddings(parser, folder_path):
         return
 
     avg_query_embedding = np.mean([emb for emb in query_embeddings.values()], axis=0)
+    print(f"Query embedding shape: {avg_query_embedding.shape}")
 
     similarities = []
     for file, embeddings in file_embeddings.items():
@@ -97,7 +100,7 @@ def test_with_ollama_embeddings(parser, folder_path):
         print("No files found in the Ollama embeddings dictionary.")
         return
 
-    query_file = files[0]
+    query_file = files[index]
     print(f"Using {query_file} as the query file")
 
     # Get the query embedding
@@ -129,7 +132,7 @@ def test_similarity_between_files():
     """
 
     # UPDATE THIS PATH TO YOUR FOLDER
-    folder_path = "/Users/jasminezou/Documents/BCS/Hackathons/bcs-hacks-roots/resources/sample-notes-markdown/testData-us"
+    folder_path = "../../resources/sample-notes-markdown/SampleNotes"
 
     if not os.path.exists(folder_path):
         print(f"Error: Folder not found at {folder_path}")
@@ -143,8 +146,8 @@ def test_similarity_between_files():
     )
     test_with_word_embeddings(parser, folder_path)
 
-    print("\n=== Testing with Ollama embeddings (WHOLE FILE EMBEDDINGS) ===")
-    test_with_ollama_embeddings(parser, folder_path)
+    # print("\n=== Testing with Ollama embeddings (WHOLE FILE EMBEDDINGS) ===")
+    # test_with_ollama_embeddings(parser, folder_path)
 
 
 def test_note_connections_with_top_similar_notes(
@@ -174,11 +177,26 @@ def test_note_connections_with_top_similar_notes(
     RELEVANT PAST NOTES:
     {old_notes}
     
-    TASK: Identify 2-3 meaningful connections between the new note and the past notes.
-    How do these concepts relate to each other? What insights might emerge from connecting these ideas?
+    You are an advanced note synthesis and knowledge extraction assistant. Given the NEW NOTE on a specific topic, your task is to:
 
-    Please optimize for brevity and clarity.
+    1. Understand the key concepts, ideas, and themes presented in new note.
+    2. Identify 2 connections in the relevant past notes that are related to this new topic, focusing on similarities in content, concepts, or underlying themes.
+    3. For each connection:
+        - Your job is to prompt a question to the user that may hint at how the current and past notes share a topic
+        - Provide the questions and how the relevant past notes connect to the questions
+        - Do not force a connection
     """
+
+    # You are an advanced note synthesis and knowledge extraction assistant. Given the NEW NOTE on a specific topic, your task is to:
+
+    # 1. Understand the key concepts, ideas, and themes presented in NEW NOTE.
+    # 2. Identify 2-3 information in the RELEVANT PAST NOTES or concepts that are related to this new topic, focusing on similarities in content, concepts, or underlying themes.
+    # 3. For each connection:
+    #     - Take one topic from the old notes and clearly explain how it relates to the new notes or prompt a quesion about how they may be related.
+    #     - Limit each connection to 2 sentences.
+    #     - Do not force a connection.
+    #     - Keep everything above in 1 short concise paragraph.
+    #     - Do not say NEW NOTE or PAST NOTE.
 
     start_time = time.time()
     response = ollama.generate(model="llama3.2", prompt=prompt)

@@ -1,0 +1,3 @@
+## Race, Gender, and Intersectionality in Politics
+
+Intersectionality examines how race, gender, and class interact to create privilege and oppression. Crenshaw's framework highlights how discrimination overlaps, shaping political representation and policy. Barriers include voter suppression, economic disparities, and lack of diverse leadership. Key issues include affirmative action, reproductive rights, and racial biases in criminal justice. Movements like BLM, feminism, and LGBTQ+ activism push for policy changes addressing systemic inequalities.
