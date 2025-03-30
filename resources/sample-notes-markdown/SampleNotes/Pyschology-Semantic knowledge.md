@@ -1,0 +1,9 @@
+## Semantic Knowledge
+
+If the specific role of the hippocampus is to enable us to retrieve memories, intuition tells us that damage to the hippocampus should also interfere with learning at school. After all, factual learning also requires memory and teachers often test their pupils to see if they remember what they have been taught. Yet Faraneh Vargha-Khadem found that surprisingly Jon had been able to learn at school.
+
+So there is a fundamental difference between remembering events in your life and remembering facts that you have been taught. This distinction is marked in the literature by contrasting ‘episodic’ with ‘semantic’ memory. It is one thing to remember where you put your keys, another to know what keys can be used for.
+
+So Rik Vandenberghe and Cathy Price scanned people while they were tested for their knowledge of the properties of things such as tools. The experiment has already been mentioned in Chapter 1. In the problem illustrated there in Figure 3 (p. 6), individuals had to judge whether a spanner or a saw is related to a pair of pliers. The answer is the spanner because it can be used to grip. The problems were either given in the form of pictures, as in Figure 3, or in words. In the latter case the word ‘pliers’ was shown above and the words ‘spanner’ and ‘saw’ below.
+
+Irrespective of whether the problems were presented in words or pictures, there was activation in the middle and inferior temporal cortex extending to the perirhinal cortex, which lies at the temporal pole (Figure 13). There was also activation in the ventral prefrontal cortex with which these are connected. The activations in common for the pictorial and verbal versions were all in the left hemisphere.
