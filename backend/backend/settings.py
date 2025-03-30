@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -51,7 +52,15 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3002",
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = "backend.urls"
 
@@ -78,13 +87,17 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('POSTGRES_DB', 'mydb'),  # Default to 'mydb' if not set
-#         'USER': os.getenv('POSTGRES_USER', 'postgres'),  # Default to 'postgres' if not set
-#         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'mypassword'),  # Default to 'mypassword' if not set
-#         'HOST': os.getenv('POSTGRES_HOST', 'db'),  # Default to 'db' if not set
-#         'PORT': os.getenv('POSTGRES_PORT', '5432'),  # Default to '5432' if not set
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.getenv("POSTGRES_DB", "mydb"),  # Default to 'mydb' if not set
+#         "USER": os.getenv(
+#             "POSTGRES_USER", "postgres"
+#         ),  # Default to 'postgres' if not set
+#         "PASSWORD": os.getenv(
+#             "POSTGRES_PASSWORD", "mypassword"
+#         ),  # Default to 'mypassword' if not set
+#         "HOST": os.getenv("POSTGRES_HOST", "db"),  # Default to 'db' if not set
+#         "PORT": os.getenv("POSTGRES_PORT", "5432"),  # Default to '5432' if not set
 #     }
 # }
 
