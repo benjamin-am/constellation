@@ -11,15 +11,18 @@
 
 .notesText {
   width: 65rem;
-  height: 89.5vh;
+  height: 85.5vh;
   size: 20px;
   align-items: left;
   font-size: 1.5rem;
+  padding: 20px;
 }
 
 .notesTitle {
   height: 5vh;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  padding: 10px;
+  padding-left: 20px;
 }
 
 .viewOutput {
