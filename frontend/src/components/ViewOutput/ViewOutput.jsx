@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
+import debounce from "lodash/debounce";
 
 import "../ViewOutput/ViewOutput.scss";
+const DEBOUNCE_DELAY = 500;
 
 function ViewOutput({ notesText, title }) {
   const [response, setResponse] = useState(null);
@@ -18,22 +20,14 @@ function ViewOutput({ notesText, title }) {
     } catch (err) {
       console.warn("Could not parse structured synthesis JSON:", err);
     }
-    return null;
+    return text;
   };
-
-  // API call
-  useEffect(() => {
-    const currentWordCount = currentText(notesText);
-    const prevWordCount = prevWordCountRef.current;
-
-    if (
-      currentWordCount >= 30 &&
-      prevWordCount < 30 &&
-      notesText.trim().length > 0
-    ) {
+  // Debounced API call
+  const debouncedAPICall = useCallback(
+    debounce((content, title) => {
       const payload = {
         title: title?.trim() || "Untitled",
-        content: notesText,
+        content: content,
       };
 
       console.log("Sending to /analyzedraft/:", payload);
@@ -45,12 +39,24 @@ function ViewOutput({ notesText, title }) {
           console.log("API Response", res.data);
         })
         .catch((error) => console.log(error));
+    }, DEBOUNCE_DELAY),
+    []
+  );
+
+  useEffect(() => {
+    const currentWordCount = currentText(notesText);
+
+    // Only make API calls if we have at least 10 words
+    if (currentWordCount >= 10 && notesText.trim().length > 0) {
+      debouncedAPICall(notesText, title);
     }
 
     prevWordCountRef.current = currentWordCount;
-  }, [notesText]);
 
-  const parsedConnections = response?.synthesis ? response.synthesis : null;
+    return () => {
+      debouncedAPICall.cancel(); // Clean up
+    };
+  }, [notesText, title, debouncedAPICall]);
 
   return (
     <div className="viewOutputWrapper">
@@ -67,21 +73,7 @@ function ViewOutput({ notesText, title }) {
               ))}
             </ul>
             <h3>Synthesis:</h3>
-            {/* {parsedConnections ? (
-              parsedConnections.map((conn, idx) => (
-                <div key={idx} className="connectionBlock">
-                  <h4>{conn.connection_title}</h4>
-                  <p>
-                    <strong>Question:</strong> {conn.question}
-                  </p>
-                  <p>
-                    <strong>Insight:</strong> {conn.insight}
-                  </p>
-                </div>
-              ))
-            ) : ( */}
-            <p>{response.synthesis}</p>
-            {/* )} */}
+            <p>{tryParseJSON(response.synthesis)}</p>
           </span>
         ) : (
           <p>Start typing and will load shortly...</p>

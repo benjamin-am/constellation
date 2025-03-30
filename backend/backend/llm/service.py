@@ -29,20 +29,38 @@ def generate_note_connections_with_llm(
         old_notes += f"\n---\nTitle: {title}\n{content}\n"
 
     prompt = f"""
-    NEW NOTE:
-    {current_text}
-    
-    RELEVANT PAST NOTES:
-    {old_notes}
-    
-    You are an advanced note synthesis and knowledge extraction assistant. Given the NEW NOTE on a specific topic, your task is to:
+        NEW NOTE:
+        {current_text.lower()}
 
-    1. Understand the key concepts, ideas, and themes presented in new note.
-    2. Identify 2 connections in the relevant past notes that are related to this new topic, focusing on similarities in content, concepts, or underlying themes.
-    3. For each connection:
-        - Your job is to prompt a question to the user that may hint at how the current and past notes share a topic
-        - Provide the questions and how the relevant past notes connect to the questions
-        - Do not force a connection
+        RELEVANT PAST NOTES:
+        {old_notes}
+
+        You are an advanced note synthesis and knowledge extraction assistant. Given the NEW NOTE on a specific topic, your task is to:
+
+        1. Understand the key concepts, ideas, and themes presented in the new note.
+        2. Identify 2 connections in the relevant past notes that are related to this new topic, focusing on similarities in content, concepts, or underlying themes.
+        3. For each connection:
+            - Prompt a question to the user that may hint at how the current and past notes share a topic.
+            - Provide the questions and how the relevant past notes connect to the questions.PLEASE PROVIDE SOME DETAIL.
+            - Do not force a connection.
+
+        IMPORTANT: Return your response in the following format WITHOUT any additional markdown. Your response should be EXACTLY in this JSON structure ENCLOSED IN A PAIR OF CURLY BRACES:
+
+        {{
+        "intro": "<brief overview or contextual summary>",
+        "connections": [
+            {{
+            "connection_title": "Connection 1",
+            "insight": "<insight text>",
+            "question": "<related reflective questions>"
+            }},
+            {{
+            "connection_title": "Connection 2",
+            "insight": "<insight text>",
+            "question": "<related reflective questions>"
+            }}
+        ]
+        }}
     """
     start_time = time.time()
     response = ollama.generate(model="llama3.2", prompt=prompt)

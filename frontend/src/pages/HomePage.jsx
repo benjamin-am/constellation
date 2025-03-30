@@ -28,14 +28,12 @@ function HomePage() {
   return (
     <section className="body">
       <div className="title__container">
-        <p className="title">constallation</p>
+        <p className="title">constellation</p>
         <button className="button button--large">
           <Link to="/notes"> Get Started </Link>
         </button>
       </div>
-      <div className="constellation">
-        {generateStars(20)} {/* Adjust number as you like */}
-      </div>
+      <div className="constellation">{generateStars(70)}</div>
     </section>
   );
 }
