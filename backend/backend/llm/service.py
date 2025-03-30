@@ -35,10 +35,14 @@ def generate_note_connections_with_llm(
     RELEVANT PAST NOTES:
     {old_notes}
     
-    TASK: Identify 2–3 meaningful connections between the new note and the past notes.
-    How do these concepts relate to each other? What insights might emerge from connecting these ideas?
+    You are an advanced note synthesis and knowledge extraction assistant. Given the NEW NOTE on a specific topic, your task is to:
 
-    Please optimize for brevity and clarity.
+    1. Understand the key concepts, ideas, and themes presented in new note.
+    2. Identify 2 connections in the relevant past notes that are related to this new topic, focusing on similarities in content, concepts, or underlying themes.
+    3. For each connection:
+        - Your job is to prompt a question to the user that may hint at how the current and past notes share a topic
+        - Provide the questions and how the relevant past notes connect to the questions
+        - Do not force a connection
     """
     start_time = time.time()
     response = ollama.generate(model="llama3.2", prompt=prompt)

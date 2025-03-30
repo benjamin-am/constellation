@@ -1,40 +1,77 @@
-
-.body{
-    background-image: linear-gradient(to bottom,  rgb(201, 183, 238) , rgb(239, 167, 167));
-    min-height: 100vh;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-
+.body {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(201, 183, 238),
+    rgb(239, 167, 167)
+  );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 a:link {
-    text-decoration: none;
-    color: white;
-  }
-  
-  /* visited link */
-  a:visited {
-    color: white;
-  }
-  
+  text-decoration: none;
+  color: white;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+}
+
 .title {
-    font-family: feijoa;
-    font-size: 5rem;
-    font-weight: bold;
+  font-family: feijoa;
+  font-size: 8rem;
+  font-weight: bold;
 
-    &__container {        
-        margin-top: 10rem;
-        width: 60rem;
-        height: 30rem;
+  &__container {
+    margin-top: 5rem;
+    width: 115rem;
+    height: 65rem;
+    align-content: center;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 0.3rem;
+    border-radius: 20px;
+    // margin-bottom: 10px;
+  }
+}
 
-        align-content: center;
-        border-color: white;
-        border-style: solid;
-        border-width: 1rem;
-        border-radius: 20px;
-        margin-bottom: 20px;
+.constellation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; // lets user still click the button easily
+}
 
+.star {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  box-shadow: 0 0 10px white;
+  animation: twinkle 2s infinite ease-in-out alternate;
+}
 
-    }
+@keyframes twinkle {
+  from {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.button {
+  &--large {
+    width: 13rem;
+    height: 5rem;
+    font-size: 1.6rem;
+  }
 }
