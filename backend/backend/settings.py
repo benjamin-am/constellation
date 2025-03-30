@@ -90,27 +90,24 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": os.getenv("POSTGRES_DB", "mydb"),  # Default to 'mydb' if not set
-#         "USER": os.getenv(
-#             "POSTGRES_USER", "postgres"
-#         ),  # Default to 'postgres' if not set
-#         "PASSWORD": os.getenv(
-#             "POSTGRES_PASSWORD", "mypassword"
-#         ),  # Default to 'mypassword' if not set
-#         "HOST": os.getenv("POSTGRES_HOST", "db"),  # Default to 'db' if not set
-#         "PORT": os.getenv("POSTGRES_PORT", "5432"),  # Default to '5432' if not set
-#     }
-# }
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB', 'mydb'),  # Default to 'mydb' if not set
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),  # Default to 'postgres' if not set
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'mypassword'),  # Default to 'mypassword' if not set
+        'HOST': os.getenv('POSTGRES_HOST', 'db'),  # Default to 'db' if not set
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),  # Default to '5432' if not set
     }
 }
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 
 
 # Password validation
