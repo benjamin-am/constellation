@@ -1,4 +1,6 @@
 import "./Header.scss";
+import { Link } from "react-router-dom";
+
 
 function Header() {
     return(
@@ -6,10 +8,10 @@ function Header() {
             <div className="header__container">
                 <div className="header__wrapper1">
                     <button className="button">
-                        Current Notes
+                        <Link to="/">Home</Link>
                     </button>
                     <button className="button">
-                        Past Notes
+                        <Link to="/notes">Take Notes</Link>
                     </button>
                 </div>
             </div>
