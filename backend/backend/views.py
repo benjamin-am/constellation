@@ -8,6 +8,7 @@ from .llm.service import get_text_embeddings_llama, generate_note_connections_wi
 from .cosine_similarity import compute_similarity
 from django.views.decorators.http import require_GET, require_POST
 from django.shortcuts import get_object_or_404
+from .parsing.embedding_strings import word_embeddings
 
 
 # @csrf_exempt
@@ -83,6 +84,7 @@ def save_note(request):
     """
     try:
         data = json.loads(request.body)
+        print("Received data:", data)
         title = data.get("title", "").strip()
         content = data.get("content", "").strip()
 
@@ -94,7 +96,9 @@ def save_note(request):
 
         # Generate embeddings
         try:
-            embeddings = get_text_embeddings_llama(content)
+            embeddings = word_embeddings([content])
+            embeddings = embeddings.tolist()
+            # embeddings = get_text_embeddings_llama(content)
         except Exception as e:
             return JsonResponse(
                 {"error": f"Failed to generate embeddings: {str(e)}"}, status=500
@@ -157,7 +161,8 @@ def analyze_note_draft(request):
 
         # TODO: try ben's function
         try:
-            query_embedding = get_text_embeddings_llama(content)
+            query_embedding = word_embeddings([content])
+            # query_embedding = get_text_embeddings_llama(content)
         except Exception as e:
             return JsonResponse(
                 {"error": f"Failed to generate embeddings: {str(e)}"}, status=500
@@ -186,6 +191,7 @@ def analyze_note_draft(request):
             {
                 "title": t,
                 "content": c,
+                "preview": c[:100],
                 "similarity": round(s, 3),
             }
             for s, t, c in top_notes
