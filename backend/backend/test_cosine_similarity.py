@@ -2,6 +2,8 @@ import os
 import sys
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+import time
+import ollama
 
 # Add the nlp directory to the Python path so we can import from it
 nlp_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "nlp"))
@@ -72,6 +74,12 @@ def test_with_word_embeddings(parser, folder_path):
     for i, (file, similarity) in enumerate(similarities):
         print(f"{i+1}. {file} (Similarity: {similarity:.4f})")
 
+    top_similar_files = [file for file, _ in similarities if file != query_file][:3]
+
+    test_note_connections_with_top_similar_notes(
+        query_file, top_similar_files, folder_path
+    )
+
 
 def test_with_ollama_embeddings(parser, folder_path):
     """Test using the Ollama embeddings approach"""
@@ -88,7 +96,7 @@ def test_with_ollama_embeddings(parser, folder_path):
     if not files:
         print("No files found in the Ollama embeddings dictionary.")
         return
-    
+
     query_file = files[0]
     print(f"Using {query_file} as the query file")
 
@@ -106,6 +114,12 @@ def test_with_ollama_embeddings(parser, folder_path):
     print("\nSimilar notes (using Ollama embeddings):")
     for i, (file, similarity) in enumerate(similarities):
         print(f"{i+1}. {file} (Similarity: {similarity:.4f})")
+
+    top_similar_files = [file for file, _ in similarities if file != query_file][:3]
+
+    test_note_connections_with_top_similar_notes(
+        query_file, top_similar_files, folder_path
+    )
 
 
 def test_similarity_between_files():
@@ -131,6 +145,47 @@ def test_similarity_between_files():
 
     print("\n=== Testing with Ollama embeddings (WHOLE FILE EMBEDDINGS) ===")
     test_with_ollama_embeddings(parser, folder_path)
+
+
+def test_note_connections_with_top_similar_notes(
+    query_file, top_similar_files, folder_path
+):
+    """Test finding connections between a query note and top similar notes"""
+
+    print("\n=== Testing note connections with LLM ===")
+
+    def read_file_content(file_path):
+        with open(file_path, "r", encoding="utf-8") as f:
+            return f.read()
+
+    query_path = os.path.join(folder_path, query_file)
+    new_note = read_file_content(query_path)
+
+    old_notes = ""
+    for filename in top_similar_files:
+        file_path = os.path.join(folder_path, filename)
+        content = read_file_content(file_path)
+        old_notes += f"\n---\nNote: {filename}\n{content}\n"
+
+    prompt = f"""
+    NEW NOTE:
+    {new_note}
+    
+    RELEVANT PAST NOTES:
+    {old_notes}
+    
+    TASK: Identify 2-3 meaningful connections between the new note and the past notes.
+    How do these concepts relate to each other? What insights might emerge from connecting these ideas?
+
+    Please optimize for brevity and clarity.
+    """
+
+    start_time = time.time()
+    response = ollama.generate(model="llama3.2", prompt=prompt)
+    end_time = time.time()
+
+    print(f"\nLLM Response (took {end_time - start_time:.2f} seconds):\n")
+    print(response["response"])
 
 
 if __name__ == "__main__":
