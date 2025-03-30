@@ -4,10 +4,11 @@ import Header from "../components/Header/Header"
 import "../pages/HomePage.scss";
 
 function HomePage() {
+
     return(
-        <div className="body">
-<Header />
-        </div>
+        <section className="body">
+        <Header />
+        </section>
  
     )
 }

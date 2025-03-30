@@ -10,11 +10,17 @@ import VerticalNavBar from "../components/VerticalNavBar/VerticalNavBar";
 
 function NotesPage() {
     const [notesText, setNotesText] = useState("");
+    const [title, setTitle] = useState("");
 
     const handleSave = (e) => {
+        const note = {
+            title: title,
+            content: notesText,
+        };
+
         console.log("successfully saved")
         axios
-        .post(`https://d020f81f-06af-4479-bcbc-0be7c8845f8d.mock.pstmn.io`, notesText)
+        .post(`http://127.0.0.1:8000/api/notes/`, note)
         .then((response) => {
           console.log(response.data);
         })
@@ -26,10 +32,17 @@ function NotesPage() {
     
     return(
         <>
-        <section className="container">
+        <section className="page">
+            <div className="container">
         <VerticalNavBar onSave={handleSave}/>
-        <Notes notesText={notesText} setNotesText={setNotesText} onSave={handleSave}/>
+        <Notes 
+        title={title}
+        setTitle={setTitle} 
+        notesText={notesText} 
+        setNotesText={setNotesText} 
+        onSave={handleSave}/>
         <ViewOutput notesText={notesText}/>
+        </div>
         </section>
 
         </>

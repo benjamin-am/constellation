@@ -1,5 +1,7 @@
 from django.http import JsonResponse
 import json
+from django.views.decorators.csrf import csrf_exempt
+
 
 # Hardcoded sample notes
 SAMPLE_NOTES = [
@@ -19,7 +21,7 @@ SAMPLE_NOTES = [
     },
 ]
 
-
+@csrf_exempt
 def notes_api(request):
     """Simple view that returns hardcoded notes"""
     if request.method == "GET":

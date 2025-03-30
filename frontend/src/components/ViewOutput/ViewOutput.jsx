@@ -16,7 +16,7 @@ function ViewOutput({ notesText }) {
     const currentWordCount = currentText(notesText);
     const prevWordCount = prevWordCountRef.current;
 
-    if (currentWordCount >= 10 && prevWordCount < 10) {
+    if (currentWordCount >= 30 && prevWordCount < 30) {
       axios
         .get(`http://127.0.0.1:8000/api/synthesize/`)
         .then((res) => {
@@ -34,7 +34,18 @@ function ViewOutput({ notesText }) {
       <div className="viewOutput">
         {response ? (
           <span className="apiResponse">
-            {JSON.stringify(response, null, 1)}
+            <h2>Synthesis:</h2>
+            <p>{response.synthesis}</p>
+
+            <h3>Similar Notes:</h3>
+            <ul>
+                {response.similar_notes.map((note, index) => (
+                    <li key={index}>
+                        <strong>{note.title}</strong>
+                        <p>{note.content}</p>
+                    </li>
+                ))}
+            </ul>
           </span>
         ) : (
           <p>Start typing and will load shortly...</p>

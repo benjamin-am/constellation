@@ -2,8 +2,13 @@
 @use "../../public/styles/mixins" as *;
 @use "../../public/styles/variables" as *;
 
+.page {
+    background-color: #59dfa1be;
+
+}
+
 .container {
-    margin: 20px;
+
     display: flex;
 
 }
