@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Welcome from "../components/Welcome/Welcome";
 import Header from "../components/Header/Header"
 
 import "../pages/HomePage.scss";
 
 function HomePage() {
-
+    const navigate = useNavigate();
+    const handleNotes = () => {
+        navigate("/notes");
+      };
     return(
         <section className="body">
             <div className="title__container">
@@ -13,8 +17,8 @@ function HomePage() {
                     constallation
                 </p>
             </div>
-        <button className="button">
-         <Link to="/notes">  Get Started </Link>
+        <button className="button" onClick={handleNotes}>
+        Get Started
         </button>
         </section>
  

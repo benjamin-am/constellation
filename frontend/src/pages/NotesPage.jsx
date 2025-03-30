@@ -29,11 +29,28 @@ function NotesPage() {
       });
   };
 
+  const handleAnalyze = (e) => {
+    const note = {
+        title: title,
+        content: notesText,
+      };
+  
+    axios
+      .post(`http://127.0.0.1:8000/api/notes/analyzedraft/`, note)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("error saving post", error);
+      });
+  };
+
+
   return (
     <>
       <section className="page">
         <div className="container">
-          <VerticalNavBar onSave={handleSave} />
+          <VerticalNavBar onSave={handleSave} onAnalyze={handleAnalyze}/>
           <Notes
             title={title}
             setTitle={setTitle}

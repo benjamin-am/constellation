@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./PastNotes.scss";
 
 function PastNotes() {
-  const [myNotes, setMyNotes] = useState([]);
+const [myNotes, setMyNotes] = useState([]);
 
+  
   useEffect(() => {
     const getAllPosts = () => {
       axios
