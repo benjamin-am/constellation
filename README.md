@@ -49,7 +49,6 @@ conda activate stack
 ### Set up docker
 
 - Download docker from http://docker.com/get-started/
-
 - Create the .ENV file inside after creating the container `/bcs-hacks-roots/backend`: 
 ```
 DB_NAME=your_db_name
@@ -62,7 +61,6 @@ DB_PORT=5432
 ### Set up the database with docker and postgres
 
 - In terminal navigate to `/bcs-hacks-roots/backend`:
-
 - `docker-compose up -d`
 - Other helpful docker commands 
 ```
@@ -85,9 +83,7 @@ docker-compose down  # Stop and remove containers
 ### Push the test data to the database
 
 - Run `data_push.ipynb` to push the test data from the repo to the database.
-
 - You can switch the path in the file to other test folders if you want to push more test data to the database.
-
 - You can also upload or creat more test data into the resources folder. Just make sure to update the file path.
 
 ### useful SQL command
@@ -96,10 +92,8 @@ docker-compose down  # Stop and remove containers
 
 - check number of rows in the note_data table
 ` select count(*) from note_data`
-
 - wipe the table and reset the auto-increment ID counter
 `TRUNCATE TABLE note_data RESTART IDENTITY;`
-
 - see all title values from the note_data table
 `select title from note_data;`
 
