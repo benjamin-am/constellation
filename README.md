@@ -103,7 +103,7 @@ docker-compose down  # Stop and remove containers
 - see all title values from the note_data table
 `select title from note_data;`
 
-# Start the app
+### Start the app
 
 In one terminal:
 
