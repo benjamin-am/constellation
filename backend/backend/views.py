@@ -154,7 +154,7 @@ def analyze_note_draft(request):
             {
                 "title": t,
                 "content": c,
-                "preview": c[:100],
+                "preview": c[:100]+"...",
                 "similarity": round(s, 3),
             }
             for s, t, c in top_notes

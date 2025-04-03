@@ -16,7 +16,6 @@ function VerticalNavBar({ onSave }) {
         <button className="button" onClick={onSave}>
           <Link to="/pastNotes">Save Current Notes</Link>
         </button>
-        <button className="button">Analyze</button>
       </ul>
     </nav>
   );
