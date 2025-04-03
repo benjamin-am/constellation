@@ -49,7 +49,7 @@ conda activate stack
 ### Set up docker
 
 - Download docker from http://docker.com/get-started/
-- Create the .ENV file inside after creating the container `/bcs-hacks-roots/backend`: 
+- Create the .ENV file inside after creating the container `/constellation/backend`: 
 ```
 DB_NAME=your_db_name
 DB_USER=your_user
@@ -60,7 +60,7 @@ DB_PORT=5432
 
 ### Set up the database with docker and postgres
 
-- In terminal navigate to `/bcs-hacks-roots/backend`:
+- In terminal navigate to `/constellation/backend`:
 - `docker-compose up -d`
 - Other helpful docker commands 
 ```
@@ -101,9 +101,9 @@ docker-compose down  # Stop and remove containers
 
 In one terminal:
 
-- Navigate to the backend directory `/bcs-hacks-roots/backend`
+- Navigate to the backend directory `/constellation/backend`
 - Type `conda activate stack` (if not already in stack), `python manage.py runserver`
   In another terminal:
-- Navigate to the frontend directory `/bcs-hacks-roots/frontend`
+- Navigate to the frontend directory `/constellation/frontend`
 - Type `conda activate stack`(if not already in stack), `npm install`, then `npm start`
   You should be able to access the app at (http://localhost:3000)
