@@ -29,7 +29,7 @@ def generate_note_connections_with_llm(
         old_notes += f"\n---\nTitle: {title}\n{content}\n"
 
     prompt = f"""
-        NEW NOTE:
+        new note:
         {current_text.lower()}
 
         RELEVANT PAST NOTES:
@@ -44,23 +44,17 @@ def generate_note_connections_with_llm(
             - Provide the questions and how the relevant past notes connect to the questions.PLEASE PROVIDE SOME DETAIL.
             - Do not force a connection.
 
-        IMPORTANT: Return your response in the following format WITHOUT any additional markdown. Your response should be EXACTLY in this JSON structure ENCLOSED IN A PAIR OF CURLY BRACES:
+          IMPORTANT: Return your response in the following plain text format, using clear labels. Do not use JSON or markdown formatting. Use the following structure:
 
-        {{
-        "intro": "<brief overview or contextual summary>",
-        "connections": [
-            {{
-            "connection_title": "Connection 1",
-            "insight": "<insight text>",
-            "question": "<related reflective questions>"
-            }},
-            {{
-            "connection_title": "Connection 2",
-            "insight": "<insight text>",
-            "question": "<related reflective questions>"
-            }}
-        ]
-        }}
+            Intro: <brief overview or contextual summary>
+
+            Connection Title: <title for the first connection>
+            Insight: <insight text>
+            Question: <reflective question>
+
+            Connection Title: <title for the second connection>
+            Insight: <insight text>
+            Question: <reflective question>
     """
     start_time = time.time()
     response = ollama.generate(model="llama3.2", prompt=prompt)

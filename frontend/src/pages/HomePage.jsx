@@ -28,7 +28,7 @@ function HomePage() {
   return (
     <section className="body">
       <div className="title__container">
-        <p className="title">constellation</p>
+        <p className="title">Constellation</p>
         <button className="button button--large">
           <Link to="/notes"> Get Started </Link>
         </button>
